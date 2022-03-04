@@ -17,6 +17,7 @@ Caso a pessoa seja direcionada para emergencia entra-ra em uma fila de espera do
  
   - Inserir em arquivos.
   - Alguns problemas na questao da dinamica que nao consegui solucionar.
+  - A ordenacao da fila de emergencia
   
   
 #### Consegui tratar grande parte dos erros
