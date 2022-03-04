@@ -28,7 +28,6 @@ namespace HospitaTest.Entities
                     Console.WriteLine($"[0 - HospitalBed / 2 - Quarentine/ 3 - Discharge]");
                     string Value = Console.ReadLine();
                     Stats = Value;
-
                 }
                 else
                     Stats = "0";

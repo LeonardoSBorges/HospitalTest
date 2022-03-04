@@ -9,8 +9,6 @@ namespace HospitaTest.Entities
     internal class Bed
     {
 
-        public int AmountBed { get; set; }
-        public int Count { get; set; }
         public Person head { get; set; }
         public Person tail { get; set; }
 
@@ -18,11 +16,10 @@ namespace HospitaTest.Entities
         {
             head = null;
             tail = null;
-            Count = 0;
         }
         public string Get()
         {
-            return "Beds available: " + AmountBed;
+            return "Beds available: " ;
         }
         public void Push(Person person)
         {
@@ -31,13 +28,11 @@ namespace HospitaTest.Entities
                 if (Empty())
                 {
                     head = tail = person;
-                    Count++;
                 }
-                else if (Count < AmountBed)
+                else 
                 {
                     tail.next = person;
                     tail = person;
-                    Count++;
                 }
             }
         }
@@ -53,7 +48,6 @@ namespace HospitaTest.Entities
                 {
                     head = null;
                     tail = null;
-                    Count--;
                 }
                 else
                 {
@@ -61,7 +55,7 @@ namespace HospitaTest.Entities
                     {
                         head.Stats = "3";
                         head = patient1.next;
-                        Count--;
+                        break;
                     }
                     else if (patient1 == tail)
                     {
@@ -69,13 +63,13 @@ namespace HospitaTest.Entities
                         patient1.Stats = "3";
                         tail = patient2;
                         patient2 = null;
-                        Count--;
+                        break;
                     }
                     else
                     {
                         patient1.Stats = "3";
                         patient2 = patient1.next;
-                        Count--;
+                        break;
                     }
                 }
 
@@ -87,7 +81,7 @@ namespace HospitaTest.Entities
                     patient2 = patient2.next;
                 }
 
-            } while (value < AmountBed);
+            } while (patient1 != null);
         }
         public bool Empty()
         {
@@ -105,7 +99,7 @@ namespace HospitaTest.Entities
                 {
                     people += $"Bed #{i + 1} \n{value.ToString()}";
                     value = value.next;
-                } while (i < AmountBed);
+                } while (value != null);
             }
             return people == "" ? "All is beds available" : people;
         }

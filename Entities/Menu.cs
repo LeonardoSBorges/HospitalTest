@@ -33,8 +33,8 @@ namespace HospitaTest.Entities
         {
 
             //Quantidade de leitos
-            Console.Write("Beds available: ");
-            bed.AmountBed = int.Parse(Console.ReadLine());
+            //Console.Write("Beds available: ");
+            //bed.AmountBed = int.Parse(Console.ReadLine());
             int opc = -1;
             do
             {
@@ -71,6 +71,7 @@ namespace HospitaTest.Entities
                             person.PushTriage(count);
                             count = 0;
                         }
+
 
                         QuarentineOrEmergencyQueue(person);
 
@@ -117,12 +118,14 @@ namespace HospitaTest.Entities
         {
             person.StatsPerson();
 
-            if (!person.triage.Emergency)
+            if (person.Stats == "2")
                 quarentineQueue.Push(person);
             else if (person.triage.Emergency)
             {
                 emergencyQueue.Push(person);
             }
+
+
         }
         public Person RegisterPerson()
         {
@@ -143,12 +146,9 @@ namespace HospitaTest.Entities
         }
         public void OccupationBeds()
         {
-            if (bed.Count < bed.AmountBed)
+            if (!emergencyQueue.Empty())
             {
-                if (!emergencyQueue.Empty())
-                {
-                    bed.Push(emergencyQueue.Pop());
-                }
+                bed.Push(emergencyQueue.Pop());
             }
         }
 
